@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Close Animation</title>
+</head>
+<style>
+    .error-box{
+        width: 40px;
+        height: 40px;
+        background: #fc5f3d;
+        box-shadow: 0px 4px 3px 4px rgba(255, 53, 53, 0.15);
+        border-radius: 6px;
+        transition: 250ms ease;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .error-box:hover{
+        background: #ff4b23;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+    }
+
+    /* .error-box .err-icon{
+        position: relative;
+    } */
+
+    .error-box div{
+        transition: 250ms ease;
+    }
+
+    .error-box div:first-of-type{
+        width: 4px;
+        height: 20px;
+        background: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        top: 7px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .error-box div:last-of-type{
+        width: 4px;
+        height: 4px;
+        background: #ffffff;
+        border-radius: 2px;
+        position: absolute;
+        bottom: 7px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .error-box:hover div:first-of-type{
+        transform: translateX(calc(-50% + 3px)) rotate(45deg) translateY(4px);
+    }
+
+    .error-box:hover div:last-of-type{
+        height: 20px;
+        transform: translateX(calc(-50% + 3px)) rotate(-45deg) translateY(-4px);
+    }
+</style>
+<body>
+    <div class="error-box">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
