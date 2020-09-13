@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dot Loader</title>
+</head>
+<style>
+    ul#loader {
+     list-style-type: none;
+     display: flex;   
+    }
+    ul#loader li {
+        margin: 0.2rem;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background-color: #ff4754;
+        animation: dotanimation 0.8s ease infinite alternate both;
+    }
+    ul#loader li:nth-child(2){
+        animation-delay: 0.2s;
+    }
+    ul#loader li:nth-child(3){
+        animation-delay: 0.4s;
+    }
+    ul#loader li:nth-child(4){
+        animation-delay: 0.6s;
+    }
+
+    @keyframes dotanimation {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-1rem);
+        }
+    }
+</style>
+<body>
+    <ul id="loader">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
