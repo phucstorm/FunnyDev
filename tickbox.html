@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tick Box Effect</title>
+</head>
+<style>
+    .tick-box {
+        width: 40px;
+        height: 40px;
+        background: #34ec46;
+        box-shadow: 0px 4px 10px 2px rgba(53, 255, 158, 0.15);
+        border-radius: 6px;
+        transition: 250ms ease;
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .tick-box:active {
+        transform: scale(0.9);
+    }
+
+    .tick-box:hover {
+        background: #21d533;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+    }
+
+    .tick-box div {
+        transition: 250ms ease;
+    }
+
+    .tick-box div:first-of-type {
+        width: 4px;
+        height: 20px;
+        background: #fff;
+        border-radius: 2px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(calc(-50% + 3px)) rotate(30deg);
+    }
+
+    .tick-box div:last-of-type{
+        width: 4px;
+        height: 12px;
+        background: #fff;
+        border-radius: 2px;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(calc(-50% - 4px)) rotate(-45deg);
+    }
+
+    .tick-box:hover div:first-of-type{
+        height: 14px;
+        transform: translateX(calc(-50% + 7.5px)) rotate(45deg) translateY(calc(50% + 2.5px));
+    }
+
+    .tick-box:hover div:last-of-type{
+        height: 14px;
+        transform: translateX(calc(-50% + 7.5px)) rotate(-45deg) translateY(calc(-50% - 2.5px));
+    }
+</style>
+<body>
+    <div class="tick-box">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
