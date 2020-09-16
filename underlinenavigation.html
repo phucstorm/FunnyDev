@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Underline Active Navigation Effect</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f4f4;
+      font-family: "Lato", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: relative;
+      background-color: #fff;
+      padding: 30px 60px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.171);
+    }
+
+    nav .line {
+      height: 2px;
+      position: absolute;
+      bottom: 20%;
+      margin: 10px 0 0 0;
+      background: #ff1847;
+    }
+
+    nav ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin: 0 40px 0 0;
+      transition: all 0.4s ease;
+    }
+
+    nav ul li:last-child {
+      margin-right: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #0e0d0d;
+      text-transform: uppercase;
+      display: block;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    nav ul li a img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  </style>
+  <body>
+    <nav>
+      <ul>
+        <li class="active">
+          <a href="#"
+            ><img src="https://i.postimg.cc/4x9y0LqW/house.png" />Home</a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img src="https://i.postimg.cc/05VzKJ70/box.png" />Packages</a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img src="https://i.postimg.cc/VN96fSYM/map.png" />Destination</a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img src="https://i.postimg.cc/65Tyr50J/gallery.png" />Gallery</a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img src="https://i.postimg.cc/MGJHJ08q/support.png" />Contact
+            Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <script>
+      var nav = $("nav");
+      var line = $("<div />").addClass("line");
+
+      line.appendTo(nav);
+
+      var active = nav.find(".active");
+      var pos = 0;
+      var wid = 0;
+
+      if (active.length) {
+        pos = active.position().left;
+        wid = active.width();
+        line.css({
+          left: pos,
+          width: wid,
+        });
+      }
+
+      nav.find("ul li a").click(function (e) {
+        e.preventDefault();
+        if (!$(this).parent().hasClass("active") && !nav.hasClass("animate")) {
+          nav.addClass("animate");
+
+          var _this = $(this);
+
+          nav.find("ul li").removeClass("active");
+
+          var position = _this.parent().position();
+          var width = _this.parent().width();
+
+          if (position.left >= pos) {
+            line.animate(
+              { width: position.left - pos + width },
+              300,
+              function () {
+                line.animate(
+                  {
+                    width: width,
+                    left: position.left,
+                  },
+                  150,
+                  function () {
+                    nav.removeClass("animate");
+                  }
+                );
+                _this.parent().addClass("active");
+              }
+            );
+          } else {
+            line.animate(
+              {
+                left: position.left,
+                width: pos - position.left + wid,
+              },
+              300,
+              function () {
+                line.animate(
+                  {
+                    width: width,
+                  },
+                  150,
+                  function () {
+                    nav.removeClass("animate");
+                  }
+                );
+                _this.parent().addClass("active");
+              }
+            );
+          }
+
+          pos = position.left;
+          wid = width;
+        }
+      });
+    </script>
+  </body>
+</html>
