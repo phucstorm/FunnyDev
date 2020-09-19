@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custome Circle Menu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        font-family: 'Dosis', sans-serif;
+        text-align: center;
+        background: #424242;
+        margin: 0;
+        padding: 0;
+    }
+
+    #menu{
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -75px 0 0 -75px;
+        list-style: none;
+        font-size: 200%;
+    }
+
+    .menu-button{
+        width: 150px;
+        opacity: 0;
+        z-index: -1;
+        height: 150px;
+        border: 5px solid #424242;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        background: #f4f4f4;
+        background-size: 100%;
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+    #menu:not(:target)>a:first-of-type, #menu:target>a:last-of-type{
+        opacity: 1;
+        z-index: 1;
+    }
+
+    #menu:not(:target)>.icon-plus:before, #menu:target>.icon-minus:before{
+        opacity: 1;
+    }
+
+    .menu-item{
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        left: 55%;
+        top:50%;
+        line-height: 5px;
+        margin: -50px 0 0 -50px;
+        border-radius: 50%;
+        background-color: #f4f4f4;
+        transform: translate(0px, 0px);
+        z-index: -2;
+        transition: .5s;
+    }
+
+    .menu-item:hover {
+        opacity: 0.5;
+        box-shadow: 0 5px 10px black;
+    }
+
+    .menu-item a{
+        top: 30%;
+        left: 0;
+        color: #424242;
+        position: relative;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #menu:target>.menu-item:nth-child(6){
+        transform: rotate(60deg) translateY(-150px) rotate(300deg);
+        transition-delay: 0s;
+    }
+
+    #menu:target>.menu-item:nth-child(5){
+        transform: rotate(20deg) translateY(-155px) rotate(-20deg);
+        transition-delay: 0.1s;
+    }
+
+    #menu:target>.menu-item:nth-child(4){
+        transform: rotate(-60deg) translateY(-150px) rotate(60deg);
+        transition-delay: 0.3s;
+    }
+    #menu:target>.menu-item:nth-child(3){
+        transform: rotate(-20deg) translateY(-155px) rotate(20deg);
+        transition-delay: 0.2s;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <ul id="menu">
+            <a href="#menu" class="menu-button icon-plus"></a>
+            <a href="#0" class="menu-button icon-minus"></a>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fa fa-twitter"></span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fa fa-github"></span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fa fa-instagram"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
