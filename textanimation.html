@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Animation</title>
+</head>
+<style>
+    body{
+        margin: 0px;
+        text-align: center;
+        font-family: 'Roboto';
+        background: #6e33d1;
+    }
+
+    #container{
+        width: 100%;
+        position: fixed;
+        bottom: 45%;
+        color: #60ff4e;
+        text-transform: uppercase;
+        font-size: 36px;
+        font-weight: bold;
+        padding-top: 200px;
+        display: block;
+    }
+
+    #animation-box{
+        height: 50px;
+        overflow: hidden;
+    }
+
+    #animation-box > div > div {
+        color: #fff;
+        padding: 4px 12px;
+        height: 45px;
+        margin-bottom: 45px;
+        display: inline-block;
+    }
+
+    #animation-box div:first-child{
+        animation: animated 4s ease infinite;
+    }
+
+    #animation-box div div{
+        background: lightgreen;
+    }
+
+    #animation-box div:first-child div{
+        background: orange;
+    }
+
+    #animation-box div:last-child div{
+        background: salmon;
+    }
+
+    @keyframes animated {
+        0% { margin-top: -270px;}
+        5% { margin-top: -180px;}
+        33% { margin-top: -180px;}
+        38% { margin-top: -90px;}
+        66% { margin-top: -90px;}
+        71% { margin-top: 0px;}
+        99.99% { margin-top: 0px;}
+        100% { margin-top: -270px;}
+    }
+</style>
+<body>
+    <div id="container">
+        I'm
+        <div id="animation-box">
+            <div><div>awesome</div></div>
+            <div><div>cool</div></div>
+            <div><div>handsome</div></div>
+        </div>
+    </div>
+</body>
+</html>
