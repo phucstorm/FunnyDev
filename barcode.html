@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barcode Generation</title>
+  </head>
+  <style>
+    .user_input {
+      padding: 8px 4px;
+      font-family: Roboto, arial;
+      font-size: 16px;
+      border: none;
+      background: transparent;
+      color: rgb(114, 60, 125);
+      border-bottom: 1px solid #007ff4;
+      display: block;
+      margin: auto;
+    }
+
+    .barcode-btn {
+      display: block;
+      margin: auto;
+    }
+
+    .gen-value {
+      border-radius: 4px;
+      padding: 8px 26px;
+      background: rgb(163, 85, 178);
+      color: #fff;
+      border: none;
+      transition: 250ms ease;
+      font-family: Roboto, arial;
+      box-shadow: none;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    .gen-value:hover {
+      background: rgb(114, 60, 125);
+    }
+
+    .gen-value:active {
+      transform: scale(0.9);
+    }
+  </style>
+  <body>
+    <input
+      class="user_input"
+      type="text"
+      id="barcode-value"
+      placeholder="Input value"
+    />
+    <button onclick="generateBarcode()" class="barcode-btn gen-value">
+      Generate Barcode
+    </button>
+    <svg id="barcode"></svg>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+    <script>
+      function generateBarcode() {
+        let barcodeValue = document.getElementById("barcode-value").value;
+        JsBarcode("#barcode", barcodeValue, {
+          background: "#143754",
+          lineColor: "#fff",
+        });
+      }
+    </script>
+  </body>
+</html>

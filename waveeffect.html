@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wave Effect</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #6f33d1;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h2 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 450px;
+    }
+    .circle {
+      background-color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      margin: 11px;
+      height: 14px;
+      width: 14px;
+      transition: transform 0.3s linear;
+    }
+
+    .circle.grow {
+      transform: scale(2);
+    }
+  </style>
+  <body>
+    <h2>Click a dot</h2>
+    <div id="container" class="container"></div>
+    <script>
+      const container = document.getElementById("container");
+      const arr = [];
+      let rows = 12;
+      let cols = 12;
+      for (let i = 0; i < cols; i++) {
+        arr[i] = [];
+        for (let j = 0; j < rows; j++) {
+          const circle = document.createElement("div");
+          circle.classList.add("circle");
+          container.appendChild(circle);
+          arr[i].push(circle);
+        }
+      }
+
+      function waveCircle(i, j) {
+        if (arr[i] && arr[i][j]) {
+          if (!arr[i][j].classList.contains("grow")) {
+            arr[i][j].classList.add("grow");
+            setTimeout(() => {
+              waveCircle(i + 1, j);
+              waveCircle(i - 1, j);
+              waveCircle(i, j + 1);
+              waveCircle(i, j - 1);
+            }, 100);
+
+            setTimeout(() => {
+              arr[i][j].classList.remove("grow");
+            }, 300);
+          }
+        }
+      }
+
+      arr.forEach((cols, i) => {
+        cols.forEach((circle, j) => {
+          circle.addEventListener("click", () => {
+            waveCircle(i, j);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
